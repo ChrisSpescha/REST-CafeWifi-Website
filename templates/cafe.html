@@ -1,0 +1,43 @@
+{% include "header.html" %}
+
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{cafe.img_url}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+            <h1 class="oval">{{cafe.name}}</h1>
+        </div>
+
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="stats">
+              <h4 class="">Location: {{cafe.location}}</h4>
+              <hr>
+              <h4 class="">Wifi: {{cafe.has_wifi}}</h4>
+              <hr>
+              <h4 class="">Sockets: {{cafe.has_sockets }}</h4>
+              <hr>
+              <h4 class="">Seats: {{cafe.seats}}</h4>
+              <hr>
+              <h4 class="">Price: {{cafe.coffee_price}}</h4>
+              <hr>
+              <h4 class="">Calls: {{cafe.can_take_calls}}</h4>
+              <hr>
+              <h4 class="">Restroom: {{cafe.has_toilet}}</h4>
+
+          </div>
+
+          </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+{% include "footer.html" %}

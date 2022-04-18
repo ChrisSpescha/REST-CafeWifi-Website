@@ -1,0 +1,64 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://www.designyourway.net/blog/wp-content/uploads/2018/12/programming-wallpaper14.jpg')">
+    <div class="overlay"></div>
+          <div class="site-heading">
+            <div class="col-lg-8 col-md-10 mx-auto">
+            <h1>Internet and Coffee</h1>
+            <span class="subheading">for your convenience</span>
+            </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% if not current_user.is_authenticated %}
+          {% for i in range(3) %}
+        <div class="post-preview">
+          <a href="{{ url_for('cafe_info', cafe_id=cafes[i].id) }}">
+            <h2 class="cafe-name">
+              {{cafes[i].name}}
+            </h2>
+            <h5 class="cafe-name">
+              location: {{cafes[i].location}}
+            </h5>
+            {% endfor %}
+            <hr>
+            <div>
+            <a href="{{ url_for('login') }}">
+            <h5 class="cafe-name">login</h5></a>
+            <h5>or</h5>
+            <a href="{{ url_for('register') }}">
+            <h5 class="cafe-name">register</h5></a>
+            <h5>to see more</h5>
+            </div>
+            {% else %}
+            {% for cafe in cafes %}
+        <div class="post-preview">
+          <a href="{{ url_for('cafe_info', cafe_id=cafe.id) }}">
+            <h2 class="cafe-name">
+              {{cafe.name}}
+            </h2>
+            <h5 class="cafe-name">
+              location: {{cafe.location}}
+            </h5>
+          </a>
+        </div>
+        <hr>
+            {% endfor %}
+            {% endif %}
+
+
+        <!-- New Post -->
+        <div class="clearfix">
+          <a class="btn btn-dark float-right" href="{{url_for('home')}}">Post new cafe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+{% include "footer.html" %}
