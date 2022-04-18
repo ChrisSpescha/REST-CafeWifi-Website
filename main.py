@@ -1,19 +1,14 @@
-from flask import Flask, render_template, redirect, url_for, flash, request, abort, jsonify
+from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-import login as login
-from datetime import date
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import Table, Column, Integer, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
-from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
-from functools import wraps
+from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
+from forms import RegisterForm, LoginForm
+import os
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 # ckeditor = CKEditor(app)
 Bootstrap(app)
 login_manager = LoginManager()
